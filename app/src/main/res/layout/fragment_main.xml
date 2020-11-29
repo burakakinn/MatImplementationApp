@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="BT ON"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/scanListView"
+        app:layout_constraintBottom_toTopOf="@id/btDeviceRecyclerView"
         app:layout_constraintEnd_toStartOf="@id/btnBluetoothOff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,15 +22,15 @@
         android:layout_height="wrap_content"
         android:text="BT OFF"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/scanListView"
+        app:layout_constraintBottom_toTopOf="@id/btDeviceRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnBluetoothOn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/scanListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/btDeviceRecyclerView"
         android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBluetoothOn"
         app:layout_constraintEnd_toStartOf="@id/btnScan"
@@ -45,8 +45,8 @@
         app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/btnConnect"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/scanListView"
-        app:layout_constraintTop_toTopOf="@id/scanListView" />
+        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
+        app:layout_constraintTop_toTopOf="@id/btDeviceRecyclerView" />
 
     <Button
         android:id="@+id/btnConnect"
@@ -54,9 +54,9 @@
         android:layout_height="wrap_content"
         android:text="CONNECT"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/scanListView"
+        app:layout_constraintBottom_toBottomOf="@id/btDeviceRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/scanListView"
+        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
         app:layout_constraintTop_toBottomOf="@id/btnScan" />
 
     <Button
@@ -68,7 +68,7 @@
         app:layout_constraintBottom_toTopOf="@id/btnSound"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scanListView" />
+        app:layout_constraintTop_toBottomOf="@id/btDeviceRecyclerView" />
 
     <Button
         android:id="@+id/btnSound"

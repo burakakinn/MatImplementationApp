@@ -22,11 +22,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matimplementationapp.MainActivity;
 import com.example.matimplementationapp.R;
+import com.example.matimplementationapp.adapters.BTDeviceAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -38,18 +44,22 @@ public class FragmentMain extends Fragment  {
     private Button btnBluetoothOff;
     private Button btnScan;
 
-    private ListView scanListView;
-    private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    private RecyclerView btDevicesRecyclerView;
     private Intent bluetoothEnabledIntent;
     private int requestCodeForEnabled;
+    private ArrayList<String> deviceNames;
+    private ArrayList<String> deviceAddreses;
 
-    ArrayList<String> deviceNames;
-//    ArrayAdapter arrayAdapter;
+
+    private BTDeviceAdapter btDeviceAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bluetoothEnabledIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        deviceNames = new ArrayList<>();
+        deviceAddreses = new ArrayList<>();
+        btDeviceAdapter = new BTDeviceAdapter(((MainActivity)getActivity()).getApplicationContext(),deviceNames);
     }
 
     @Nullable
@@ -60,22 +70,18 @@ public class FragmentMain extends Fragment  {
         btnBluetoothOn = view.findViewById(R.id.btnBluetoothOn);
         btnBluetoothOff = view.findViewById(R.id.btnBluetoothOff);
         btnScan = view.findViewById(R.id.btnScan);
-        scanListView = view.findViewById(R.id.scanListView);
+        btDevicesRecyclerView = view.findViewById(R.id.btDeviceRecyclerView);
         requestCodeForEnabled = 1;
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        ((MainActivity)getActivity()).registerReceiver(receiver,filter);
 
         bluetoothOnMethod();
         bluetoothOffMethod();
         btnScanListener();
-//        btnShowPairedDevicesListener();
 
-        deviceNames = new ArrayList<>();
-//        arrayAdapter = new ArrayAdapter<String>(((MainActivity)getActivity()).getApplicationContext(), android.R.layout.simple_list_item_1,stringArrayList);
+        btDevicesRecyclerView.setLayoutManager(new LinearLayoutManager(((MainActivity)getActivity()).getApplicationContext()));
+        btDevicesRecyclerView.setAdapter(btDeviceAdapter);
 
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        ((MainActivity)getActivity()).registerReceiver(receiver,filter);
-
-        // filling the listview
-//        scanListView.setAdapter(arrayAdapter);
         return view;
     }
 
@@ -94,10 +100,10 @@ public class FragmentMain extends Fragment  {
         btnBluetoothOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bluetoothAdapter==null){
+                if(((MainActivity)getActivity()).getBluetoothAdapter()==null){
                     Toast.makeText(((MainActivity)getActivity()).getApplicationContext(),"Bluetooth is not supported by device.",Toast.LENGTH_LONG).show();
                 } else {
-                    if(!bluetoothAdapter.isEnabled()){
+                    if(!((MainActivity)getActivity()).getBluetoothAdapter().isEnabled()){
                         startActivityForResult(bluetoothEnabledIntent,requestCodeForEnabled);
 //                        Toast.makeText(((MainActivity)getActivity()).getApplicationContext(),"Bluetooth will be Enabled.",Toast.LENGTH_LONG).show();
                     }
@@ -110,8 +116,8 @@ public class FragmentMain extends Fragment  {
         btnBluetoothOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bluetoothAdapter.isEnabled()){
-                    bluetoothAdapter.disable();
+                if(((MainActivity)getActivity()).getBluetoothAdapter().isEnabled()){
+                    ((MainActivity)getActivity()).getBluetoothAdapter().disable();
                     Toast.makeText(((MainActivity)getActivity()).getApplicationContext(),"Bluetooth Disabled.",Toast.LENGTH_LONG).show();
                 }
             }
@@ -130,7 +136,7 @@ public class FragmentMain extends Fragment  {
 
                     ((MainActivity)getActivity()).requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); //Any number
                 }
-                bluetoothAdapter.startDiscovery();
+                ((MainActivity)getActivity()).getBluetoothAdapter().startDiscovery();
                 Log.i("btscan","discovery started");
             }
         });
@@ -139,36 +145,44 @@ public class FragmentMain extends Fragment  {
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-//            Log.i("btscan","action found but not equal");
             if(BluetoothDevice.ACTION_FOUND.equals(action)){
                 Log.i("btscan","action found");
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-//                deviceNames.add(device.getName());
-//                arrayAdapter.notifyDataSetChanged();
-                Log.i("btscan",device.getName());
-                Log.i("btscan",String.valueOf(deviceNames.size()));
+                if(device.getName() != null){
+                    if(!deviceAddreses.contains(device.getAddress())){
+                        deviceAddreses.add(device.getAddress());
+                        deviceNames.add(device.getName());
+                        btDeviceAdapter.notifyDataSetChanged();
+                        Log.i("btscan",device.getName());
+                        Log.i("btscan",String.valueOf(deviceNames.size()));
+                    }
+                    Log.i("btscan","device found");
+                } else {
+                    // handle
+                }
+
             }
         }
     };
 
-    private void btnShowPairedDevicesListener(){
-        btnScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Set<BluetoothDevice> bluetoothDeviceSet = bluetoothAdapter.getBondedDevices();
-                String[] deviceNames = new String[bluetoothDeviceSet.size()];
-                int index = 0;
-
-                if(bluetoothDeviceSet.size() > 0){
-                    for (BluetoothDevice device : bluetoothDeviceSet){
-                        deviceNames[index] = device.getName();
-                        index++;
-                    }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(((MainActivity)getActivity()).getApplicationContext(), android.R.layout.simple_list_item_1,deviceNames);
-                    scanListView.setAdapter(arrayAdapter);
-                }
-            }
-        });
-    }
+//    private void btnShowPairedDevicesListener(){
+//        btnScan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Set<BluetoothDevice> bluetoothDeviceSet = ((MainActivity)getActivity()).getBluetoothAdapter().getBondedDevices();
+//                String[] deviceNames = new String[bluetoothDeviceSet.size()];
+//                int index = 0;
+//
+//                if(bluetoothDeviceSet.size() > 0){
+//                    for (BluetoothDevice device : bluetoothDeviceSet){
+//                        deviceNames[index] = device.getName();
+//                        index++;
+//                    }
+//                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(((MainActivity)getActivity()).getApplicationContext(), android.R.layout.simple_list_item_1,deviceNames);
+//                    scanListView.setAdapter(arrayAdapter);
+//                }
+//            }
+//        });
+//    }
 
 }
