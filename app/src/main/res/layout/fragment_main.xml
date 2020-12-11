@@ -1,140 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
     <Button
-        android:id="@+id/btnBluetoothOn"
+        android:id="@+id/btnControlFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BT ON"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnEnableDiscoverability"
-        app:layout_constraintEnd_toStartOf="@id/btnBluetoothOff"
+        android:text="CONTROL"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnBluetoothOff"
+        android:id="@+id/btnBluetoothFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BT OFF"
+        android:layout_marginTop="20dp"
+        android:text="BLUETOOTH"
+        android:textColor="@color/black"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnEnableDiscoverability"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnBluetoothOn"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnEnableDiscoverability"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ENABLE DISCOVERABILITY"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btDeviceRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBluetoothOn" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/btDeviceRecyclerView"
-        android:layout_width="140dp"
-        android:layout_height="200dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnEnableDiscoverability"
-        app:layout_constraintEnd_toStartOf="@id/btnStartScan"
-        app:layout_constraintBottom_toTopOf="@id/btnName"/>
-
-
-    <Button
-        android:id="@+id/btnStartScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="START SCAN"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnStopScan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
-        app:layout_constraintTop_toTopOf="@id/btDeviceRecyclerView" />
-
-    <Button
-        android:id="@+id/btnStopScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="STOP SCAN"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnConnect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
-        app:layout_constraintTop_toBottomOf="@id/btnStartScan" />
-
-    <Button
-        android:id="@+id/btnConnect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CONNECT"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/btDeviceRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
-        app:layout_constraintTop_toBottomOf="@id/btnStopScan" />
-
-    <Button
-        android:id="@+id/btnName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NAME"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
-        app:layout_constraintEnd_toStartOf="@id/btnSound"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btDeviceRecyclerView" />
-
-    <Button
-        android:id="@+id/btnSound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SOUND"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
-        app:layout_constraintEnd_toStartOf="@id/btnInfo"
-        app:layout_constraintStart_toEndOf="@id/btnName"
-        app:layout_constraintTop_toBottomOf="@id/btDeviceRecyclerView" />
-
-    <Button
-        android:id="@+id/btnInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INFO"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnSound"
-        app:layout_constraintTop_toBottomOf="@id/btDeviceRecyclerView" />
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NEXT"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnPrevious"
-        app:layout_constraintTop_toBottomOf="@id/btnSound" />
-
-    <Button
-        android:id="@+id/btnPrevious"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PREVIOUS"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnNext"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSound" />
-
+        app:layout_constraintTop_toBottomOf="@id/btnControlFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

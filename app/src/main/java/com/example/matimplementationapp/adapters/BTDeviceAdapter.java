@@ -1,54 +1,24 @@
 package com.example.matimplementationapp.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matimplementationapp.R;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
-
-//public class BTDeviceAdapter extends RecyclerView.Adapter {
-//
-//    ArrayList<String> deviceNames;
-//    private CardviewBtdeviceBinding binding;
-//
-//    public BTDeviceAdapter(ArrayList<String> deviceNames) {
-//        this.deviceNames = deviceNames;
-//    }
-//
-//    class BTViewHolder {
-//
-//    }
-//
-//    @NonNull
-//    @Override
-//    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        binding = CardviewBtdeviceBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-//        return null;
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-//
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return deviceNames.size();
-//    }
-//}
 
 public class BTDeviceAdapter extends RecyclerView.Adapter<BTDeviceAdapter.ViewHolder> {
 
     private ArrayList<String> deviceNames;
     private Context context;
+    private int bluetoothDeviceIndex;
 
     public BTDeviceAdapter(Context context, ArrayList<String> deviceNames) {
         this.deviceNames = deviceNames;
@@ -61,15 +31,20 @@ public class BTDeviceAdapter extends RecyclerView.Adapter<BTDeviceAdapter.ViewHo
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private CardView card;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             textView = (TextView) view.findViewById(R.id.btcardDeviceName);
+            card = (CardView) view.findViewById(R.id.card);
         }
 
         public TextView getTextView() {
             return textView;
+        }
+        public CardView getCardView() {
+            return card;
         }
     }
 
@@ -90,12 +65,23 @@ public class BTDeviceAdapter extends RecyclerView.Adapter<BTDeviceAdapter.ViewHo
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText(deviceNames.get(position));
+        viewHolder.getCardView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bluetoothDeviceIndex = position;
+                Log.i("btscan",deviceNames.get(position) + " is selected");
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return deviceNames.size();
+    }
+
+    public int getBluetoothDeviceIndex() {
+        return bluetoothDeviceIndex;
     }
 }
 
