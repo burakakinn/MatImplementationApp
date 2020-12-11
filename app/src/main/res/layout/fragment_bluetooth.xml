@@ -8,42 +8,6 @@
     android:background="@color/black"
     >
 
-<!--    <Button-->
-<!--        android:id="@+id/btnBluetoothOn"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="BT ON"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:backgroundTint="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/btnEnableDiscoverability"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/btnBluetoothOff"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnBluetoothOff"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="BT OFF"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:backgroundTint="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/btnEnableDiscoverability"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@id/btnBluetoothOn"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnEnableDiscoverability"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="ENABLE DISCOVERABILITY"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:backgroundTint="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/btnStartScan"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btnBluetoothOn" />-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/btDeviceRecyclerView"
         app:layout_constraintWidth_percent="33"
@@ -114,18 +78,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
         app:layout_constraintTop_toBottomOf="@id/selectedBtDeviceTextView" />
-
-<!--    <Button-->
-<!--        android:id="@+id/btnListen"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="LISTEN"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:backgroundTint="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/btDeviceRecyclerView"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btnConnect" />-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
