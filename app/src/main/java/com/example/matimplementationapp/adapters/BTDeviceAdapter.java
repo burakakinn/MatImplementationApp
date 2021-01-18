@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matimplementationapp.R;
@@ -19,7 +20,7 @@ public class BTDeviceAdapter extends RecyclerView.Adapter<BTDeviceAdapter.ViewHo
     private ArrayList<String> deviceNames;
     private Context context;
     private int bluetoothDeviceIndex;
-
+    public MutableLiveData<Integer> selectedDeviceLiveData ;
     public BTDeviceAdapter(Context context, ArrayList<String> deviceNames) {
         this.deviceNames = deviceNames;
         this.context = context;
@@ -68,6 +69,7 @@ public class BTDeviceAdapter extends RecyclerView.Adapter<BTDeviceAdapter.ViewHo
         viewHolder.getCardView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                selectedDeviceLiveData.setValue(position);
                 bluetoothDeviceIndex = position;
                 Log.i("btscan",deviceNames.get(position) + " is selected");
             }
@@ -82,6 +84,13 @@ public class BTDeviceAdapter extends RecyclerView.Adapter<BTDeviceAdapter.ViewHo
 
     public int getBluetoothDeviceIndex() {
         return bluetoothDeviceIndex;
+    }
+
+    public MutableLiveData<Integer> getSelectedDeviceLiveData(){
+        if(selectedDeviceLiveData == null){
+            selectedDeviceLiveData = new MutableLiveData<Integer>();
+        }
+        return selectedDeviceLiveData;
     }
 }
 

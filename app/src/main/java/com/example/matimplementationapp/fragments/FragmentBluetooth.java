@@ -21,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -148,16 +150,14 @@ public class FragmentBluetooth extends Fragment  {
     }
 
     private void btnSelectListener(){
-        btnSelect.setOnClickListener(new View.OnClickListener() {
+
+        btDeviceAdapter.getSelectedDeviceLiveData().observe(this, new Observer<Integer>() {
             @Override
-            public void onClick(View v) {
-                if(btDevices.size()>0){
-                    selectedBtDeviceTextView.setText(btDevices.get(btDeviceAdapter.getBluetoothDeviceIndex()).getName());
-                    Log.i(TAG, btDevices.get(btDeviceAdapter.getBluetoothDeviceIndex()).getName());
-                }
+            public void onChanged(Integer integer) {
+                selectedBtDeviceTextView.setText(btDevices.get(integer).getName());
+
             }
         });
-
     }
 
     private void btnConnectListener() {

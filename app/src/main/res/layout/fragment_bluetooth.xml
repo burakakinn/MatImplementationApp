@@ -9,25 +9,26 @@
     >
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/btDeviceRecyclerView"
-        app:layout_constraintWidth_percent="33"
-        android:layout_width="140dp"
-        android:layout_height="300dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnStartScan"
-        app:layout_constraintEnd_toStartOf="@id/btnConnect"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/selectedBtDeviceTextView"/>
 
 
     <Button
+        android:layout_marginTop="50dp"
         android:id="@+id/btnStartScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="START SCAN"
         android:textColor="@color/black"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btDeviceRecyclerView"
         app:layout_constraintEnd_toStartOf="@id/btnStopScan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,12 +40,12 @@
         android:text="STOP SCAN"
         android:textColor="@color/black"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btDeviceRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStartScan"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/btnStartScan" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btnSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,26 +58,30 @@
         app:layout_constraintTop_toTopOf="@id/btDeviceRecyclerView" />
 
     <TextView
+        android:layout_marginBottom="20dp"
         android:id="@+id/selectedBtDeviceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="24dp"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/btnSelect"
-        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/btnConnect"
+        app:layout_constraintEnd_toEndOf="@id/btnConnect"
         app:layout_constraintBottom_toTopOf="@id/btnConnect"/>
 
 
     <Button
+        android:layout_marginBottom="20dp"
         android:id="@+id/btnConnect"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CONNECT"
         android:textColor="@color/black"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/btDeviceRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btDeviceRecyclerView"
-        app:layout_constraintTop_toBottomOf="@id/selectedBtDeviceTextView" />
+        app:layout_constraintStart_toStartOf="parent"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
