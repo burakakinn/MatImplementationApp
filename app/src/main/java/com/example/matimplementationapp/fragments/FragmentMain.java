@@ -17,6 +17,7 @@ public class FragmentMain extends Fragment {
 
     private Button btnControlFragment;
     private Button btnBluetoothFragment;
+    private Button btnQuizModeFragment;
 
     @Nullable
     @Override
@@ -33,11 +34,22 @@ public class FragmentMain extends Fragment {
     private void findViewByIds(View view) {
         btnBluetoothFragment = view.findViewById(R.id.btnBluetoothFragment);
         btnControlFragment = view.findViewById(R.id.btnControlFragment);
+        btnQuizModeFragment = view.findViewById(R.id.btnQuizModeFragment);
     }
 
     private void addListeners() {
         btnControlFragmentListener();
         btnBluetoothFragmentListener();
+        btnQuizModeFragmentListener();
+    }
+
+    private void btnQuizModeFragmentListener() {
+        btnQuizModeFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).changeFragment(new FragmentQuizMode());
+            }
+        });
     }
 
     private void btnControlFragmentListener(){
