@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private SendReceive sendReceive;
 
     private static final String APP_NAME = "ANIMAL_APP";
-    public static final UUID MY_UUID = UUID.fromString("199198d0-325e-11eb-adc1-0242ac120002");
-    private static final String TAG = "BT";
+//    public static final UUID MY_UUID = UUID.fromString("199198d0-325e-11eb-adc1-0242ac120002");
+    public static UUID MY_UUID;
+    private static final String TAG = "mytag";
 
     static final int STATE_LISTENING = 1;
     static final int STATE_CONNECTING = 2;
@@ -143,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 // Get a BluetoothSocket to connect with the given BluetoothDevice.
                 // MY_UUID is the app's UUID string, also used in the server code.
-                tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
+//                tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
+                tmp = device.createRfcommSocketToServiceRecord(device.getUuids()[0].getUuid());
             } catch (IOException e) {
                 Log.e(TAG, "Socket's create() method failed", e);
             }
@@ -263,7 +265,8 @@ public class MainActivity extends AppCompatActivity {
                     byte[] readBuff= (byte[]) msg.obj;
                     String tempMsg=new String(readBuff,0,msg.arg1);
 //                    String tempMsg = "test message";
-                    Toast.makeText(getApplicationContext(),tempMsg,Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(),tempMsg,Toast.LENGTH_LONG).show();
+                    Log.i(TAG, tempMsg);
                     break;
             }
             return true;
