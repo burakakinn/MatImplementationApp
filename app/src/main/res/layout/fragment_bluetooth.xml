@@ -71,6 +71,21 @@
 
     <Button
         android:layout_marginBottom="20dp"
+        android:id="@+id/btnListen"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTEN"
+        android:textColor="@color/black"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnConnect"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:layout_marginBottom="20dp"
         android:id="@+id/btnConnect"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
@@ -81,7 +96,7 @@
         app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnListen"
          />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

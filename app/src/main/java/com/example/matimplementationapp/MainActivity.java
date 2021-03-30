@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private SendReceive sendReceive;
 
     private static final String APP_NAME = "ANIMAL_APP";
-//    public static final UUID MY_UUID = UUID.fromString("199198d0-325e-11eb-adc1-0242ac120002");
-    public static UUID MY_UUID;
+    public static final UUID MY_UUID = UUID.fromString("199198d0-325e-11eb-adc1-0242ac120002");
     private static final String TAG = "mytag";
 
     static final int STATE_LISTENING = 1;

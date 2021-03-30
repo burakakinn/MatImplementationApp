@@ -41,6 +41,7 @@ public class FragmentBluetooth extends Fragment  {
     private Button btnStopScan;
     private Button btnSelect;
     private Button btnConnect;
+    private Button btnListen;
     private Button btnSend;
 
     private TextView selectedBtDeviceTextView;
@@ -90,6 +91,7 @@ public class FragmentBluetooth extends Fragment  {
         btDevicesRecyclerView = view.findViewById(R.id.btDeviceRecyclerView);
         btnSelect = view.findViewById(R.id.btnSelect);
         btnConnect = view.findViewById(R.id.btnConnect);
+        btnListen = view.findViewById(R.id.btnListen);
         selectedBtDeviceTextView = view.findViewById(R.id.selectedBtDeviceTextView);
     }
 
@@ -98,6 +100,7 @@ public class FragmentBluetooth extends Fragment  {
         btnStopScanListener();
         btnSelectListener();
         btnConnectListener();
+        btnListenListener();
     }
 
     @Override
@@ -106,9 +109,29 @@ public class FragmentBluetooth extends Fragment  {
             if(resultCode == RESULT_OK){
                 Toast.makeText(((MainActivity)getActivity()).getApplicationContext(), "Bluetooth Enabled", Toast.LENGTH_SHORT).show();
             } else if(resultCode == RESULT_CANCELED){
-                Toast.makeText(((MainActivity)getActivity()).getApplicationContext(),"Bluetooth Enabling Cancelled",Toast.LENGTH_LONG).show();
+                Toast.makeText(((MainActivity)getActivity()).getApplicationContext(),"Bluetooth Enabling Cancelled",Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void btnListenListener(){
+        btnListen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((MainActivity) getActivity()).getBluetoothAdapter() == null) {
+                    Toast.makeText(((MainActivity) getActivity()).getApplicationContext(), "Bluetooth is not supported by device.", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (!((MainActivity) getActivity()).getBluetoothAdapter().isEnabled()) {
+                        startActivityForResult(bluetoothEnabledIntent, REQUEST_ENABLE_BLUETOOTH);
+                    }
+                }
+                Intent discoverableIntent =
+                        new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 60);
+                startActivity(discoverableIntent);
+                ((MainActivity)getActivity()).startAcceptThread();
+            }
+        });
     }
 
 
