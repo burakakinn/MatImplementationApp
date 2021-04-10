@@ -18,13 +18,25 @@
         app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
     <Button
+        android:id="@+id/btnAlphabet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ALPHABET"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/btnBluetoothFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnQuizModeFragment" />
+
+    <Button
         android:id="@+id/btnQuizModeFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="QUIZ MODE"
         android:textColor="@color/black"
         app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/btnBluetoothFragment"
+        app:layout_constraintBottom_toTopOf="@id/btnAlphabet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnControlFragment" />
@@ -40,20 +52,20 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnQuizModeFragment" />
+        app:layout_constraintTop_toBottomOf="@id/btnAlphabet" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
