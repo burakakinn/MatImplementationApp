@@ -331,6 +331,24 @@
         app:layout_constraintStart_toEndOf="@id/btnLetterFree"
         app:layout_constraintTop_toBottomOf="@id/btnLetterFree" />
 
+    <Button
+        android:id="@+id/btnNext"
+        android:text="NEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnLetterFree"
+        app:layout_constraintTop_toBottomOf="@id/btnLetterAsk" />
+
+    <Button
+        android:id="@+id/btnPrev"
+        android:text="PREV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/btnObjectFree"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLetterAsk" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
         android:layout_width="wrap_content"

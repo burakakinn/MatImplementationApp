@@ -18,6 +18,8 @@ import com.example.matimplementationapp.R;
 public class FragmentAlphabet extends Fragment {
 
     private Button btnSong;
+    private Button btnNext;
+    private Button btnPrev;
     private Button btnRepeat;
     private Button btnSpell;
     private Button btnLetterFreeMode;
@@ -55,7 +57,6 @@ public class FragmentAlphabet extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-     //   getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override
@@ -76,6 +77,8 @@ public class FragmentAlphabet extends Fragment {
 
     private void findViewByIds(View view) {
         btnSong = view.findViewById(R.id.btnSong);
+        btnNext = view.findViewById(R.id.btnNext);
+        btnPrev = view.findViewById(R.id.btnPrev);
         btnRepeat = view.findViewById(R.id.btnRepeat);
         btnSpell = view.findViewById(R.id.btnSpell);
         btnLetterFreeMode = view.findViewById(R.id.btnLetterFree);
@@ -138,6 +141,8 @@ public class FragmentAlphabet extends Fragment {
         btnYAddListener();
         btnZAddListener();
         btnSongAddListener();
+        btnNextAddListener();
+        btnPrevAddListener();
         btnRepeatAddListener();
         btnSpellAddListener();
         btnLetterFreeAddListener();
@@ -302,9 +307,98 @@ public class FragmentAlphabet extends Fragment {
     }
 
     private void btnRepeatAddListener() {
+        btnRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sendData("!" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((MainActivity)getActivity()).sendData(
+                                "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;50;50;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "281#");
+                    }
+                },100);
+            }
+        });
     }
 
     private void btnSongAddListener() {
+    }
+    private void btnNextAddListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sendData("!" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((MainActivity)getActivity()).sendData(
+                                "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;60;0;0;0;0;0;0;0;" +
+                                        "281#");
+                    }
+                },100);
+            }
+        });
+    }
+
+    private void btnPrevAddListener() {
+        btnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sendData("!" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((MainActivity)getActivity()).sendData(
+                                "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;50;0;0;0;0;0;0;0;0;0;0;" +
+                                        "281#");
+                    }
+                },100);
+            }
+        });
     }
 
     private void btnZAddListener() {
