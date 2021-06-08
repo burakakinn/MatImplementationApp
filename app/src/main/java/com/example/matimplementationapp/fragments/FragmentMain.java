@@ -19,6 +19,7 @@ public class FragmentMain extends Fragment {
     private Button btnBluetoothFragment;
     private Button btnQuizModeFragment;
     private Button btnAlphabet;
+    private Button btnMath;
 
     @Nullable
     @Override
@@ -37,6 +38,7 @@ public class FragmentMain extends Fragment {
         btnControlFragment = view.findViewById(R.id.btnControlFragment);
         btnQuizModeFragment = view.findViewById(R.id.btnQuizModeFragment);
         btnAlphabet = view.findViewById(R.id.btnAlphabet);
+        btnMath = view.findViewById(R.id.btnMath);
     }
 
     private void addListeners() {
@@ -44,6 +46,7 @@ public class FragmentMain extends Fragment {
         btnBluetoothFragmentListener();
         btnQuizModeFragmentListener();
         btnAlphabetListener();
+        btnMathListener();
     }
 
     private void btnQuizModeFragmentListener() {
@@ -60,6 +63,15 @@ public class FragmentMain extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).changeFragment(new FragmentAlphabet());
+            }
+        });
+    }
+
+    private void btnMathListener() {
+        btnMath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).changeFragment(new FragmentMath());
             }
         });
     }
