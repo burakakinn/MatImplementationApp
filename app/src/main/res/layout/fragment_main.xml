@@ -6,10 +6,10 @@
     android:background="@color/black">
 
     <Button
-        android:id="@+id/btnControlFragment"
+        android:id="@+id/btnAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTROL"
+        android:text="ANIMAL"
         android:textColor="@color/black"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@id/btnQuizModeFragment"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@id/btnAlphabet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnControlFragment" />
+        app:layout_constraintTop_toBottomOf="@id/btnAnimal" />
 
     <Button
         android:id="@+id/btnMath"

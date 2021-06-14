@@ -15,7 +15,7 @@ import com.example.matimplementationapp.R;
 
 public class FragmentMain extends Fragment {
 
-    private Button btnControlFragment;
+    private Button btnAnimal;
     private Button btnBluetoothFragment;
     private Button btnQuizModeFragment;
     private Button btnAlphabet;
@@ -35,14 +35,14 @@ public class FragmentMain extends Fragment {
 
     private void findViewByIds(View view) {
         btnBluetoothFragment = view.findViewById(R.id.btnBluetoothFragment);
-        btnControlFragment = view.findViewById(R.id.btnControlFragment);
+        btnAnimal = view.findViewById(R.id.btnAnimal);
         btnQuizModeFragment = view.findViewById(R.id.btnQuizModeFragment);
         btnAlphabet = view.findViewById(R.id.btnAlphabet);
         btnMath = view.findViewById(R.id.btnMath);
     }
 
     private void addListeners() {
-        btnControlFragmentListener();
+        btnAnimalListener();
         btnBluetoothFragmentListener();
         btnQuizModeFragmentListener();
         btnAlphabetListener();
@@ -76,11 +76,11 @@ public class FragmentMain extends Fragment {
         });
     }
 
-    private void btnControlFragmentListener(){
-        btnControlFragment.setOnClickListener(new View.OnClickListener() {
+    private void btnAnimalListener(){
+        btnAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).changeFragment(new FragmentControl());
+                ((MainActivity)getActivity()).changeFragment(new FragmentAnimal());
             }
         });
     }

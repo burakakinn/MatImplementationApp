@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <Button
+        android:id="@+id/btnRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REPEAT"
+        app:layout_constraintBottom_toTopOf="@id/btnName"
+        app:layout_constraintEnd_toStartOf="@id/btnSound"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLearn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LEARN"
+        app:layout_constraintBottom_toTopOf="@id/btnName"
+        app:layout_constraintEnd_toStartOf="@id/btnAsk"
+        app:layout_constraintStart_toEndOf="@id/btnRepeat"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAsk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ASK"
+        app:layout_constraintBottom_toTopOf="@id/btnName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSound"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NAME"
+        app:layout_constraintBottom_toTopOf="@id/btnNo"
+        app:layout_constraintEnd_toStartOf="@id/btnSound"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRepeat" />
+
+    <Button
+        android:id="@+id/btnSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOUND"
+        app:layout_constraintBottom_toTopOf="@id/btnNo"
+        app:layout_constraintEnd_toStartOf="@id/btnInfo"
+        app:layout_constraintStart_toEndOf="@id/btnName"
+        app:layout_constraintTop_toBottomOf="@id/btnRepeat" />
+
+    <Button
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INFO"
+        app:layout_constraintBottom_toTopOf="@id/btnNo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSound"
+        app:layout_constraintTop_toBottomOf="@id/btnRepeat" />
+
+
+    <Button
+    android:id="@+id/btnYes"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="YES"
+    app:layout_constraintBottom_toTopOf="@id/btnNext"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/btnNo"
+    app:layout_constraintTop_toBottomOf="@id/btnSound" />
+
+    <Button
+    android:id="@+id/btnNo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="NO"
+    app:layout_constraintBottom_toTopOf="@id/btnNext"
+    app:layout_constraintEnd_toStartOf="@id/btnYes"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/btnSound" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnPrev"
+        app:layout_constraintTop_toBottomOf="@id/btnNo" />
+
+    <Button
+        android:id="@+id/btnPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PREV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
