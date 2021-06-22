@@ -338,6 +338,34 @@ public class FragmentAlphabet extends Fragment {
     }
 
     private void btnSongAddListener() {
+        btnSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sendData("!" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((MainActivity)getActivity()).sendData(
+                                "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "80;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;" +
+                                        "281#");
+                    }
+                },100);
+            }
+        });
     }
     private void btnNextAddListener() {
         btnNext.setOnClickListener(new View.OnClickListener() {
